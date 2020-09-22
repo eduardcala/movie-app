@@ -66,4 +66,13 @@ class Pelicula {
     releaseDate      = json['release_date'];
   }
 
+  getPosterImg() {
+
+    if ( posterPath == null) {
+      return 'https://thumbs.dreamstime.com/b/no-image-available-icon-photo-camera-flat-vector-illustration-132483141.jpg';
+    }
+    return 'https://image.tmdb.org/t/p/original/$posterPath';
+  }
+
+
 }
