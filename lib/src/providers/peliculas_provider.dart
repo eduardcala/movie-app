@@ -12,6 +12,7 @@ class PeliculasProvider {
   String _language = 'es-ES';
 
   int _popularesPage = 0;
+  bool _cargando     = false;
 
   List<Pelicula> _populares = new List();
 
@@ -49,6 +50,9 @@ class PeliculasProvider {
   }
 
   Future<List<Pelicula>> getPopulares() async {
+    if ( _cargando ) return [];
+
+    _cargando = true;
 
     _popularesPage++;
 
@@ -62,6 +66,8 @@ class PeliculasProvider {
 
     _populares.addAll(resp);
     popularesSink(_populares);
+
+    _cargando = false;
 
     return resp;
 
